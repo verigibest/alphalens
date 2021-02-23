@@ -23,6 +23,7 @@ from . import plotting
 from . import performance as perf
 from . import utils
 
+report_dir="./"
 
 class GridFigure(object):
     """
@@ -158,6 +159,7 @@ def create_summary_tear_sheet(factor_data,
 
     plotting.plot_turnover_table(autocorrelation, quantile_turnover)
 
+    plt.savefig(report_dir+"create_summary_tear_sheet.jpg")       
     plt.show()
     gf.close()
 
@@ -289,6 +291,7 @@ def create_returns_tear_sheet(factor_data,
         ax=ax_mean_quantile_returns_spread_ts
     )
 
+    plt.savefig(report_dir+"create_returns_tear_sheet.jpg")  
     plt.show()
     gf.close()
 
@@ -317,6 +320,7 @@ def create_returns_tear_sheet(factor_data,
                                            by_group=True,
                                            ylim_percentiles=(5, 95),
                                            ax=ax_quantile_returns_bar_by_group)
+        plt.savefig(report_dir+"create_returns_tear_sheet_by_group.jpg")                
         plt.show()
         gf.close()
 
@@ -378,6 +382,7 @@ def create_information_tear_sheet(factor_data,
 
         plotting.plot_ic_by_group(mean_group_ic, ax=gf.next_row())
 
+    plt.savefig(report_dir+"create_information_tear_sheet.jpg")    
     plt.show()
     gf.close()
 
@@ -441,7 +446,8 @@ def create_turnover_tear_sheet(factor_data, turnover_periods=None):
         plotting.plot_factor_rank_auto_correlation(autocorrelation[period],
                                                    period=period,
                                                    ax=gf.next_row())
-
+        
+    plt.savefig(report_dir+"create_turnover_tear_sheet.jpg")    
     plt.show()
     gf.close()
 
@@ -559,6 +565,7 @@ def create_event_returns_tear_sheet(factor_data,
             std_bar=True,
             ax=ax_avg_cumulative_returns_by_q)
 
+    plt.savefig(report_dir+"create_event_returns_tear_sheet.jpg")        
     plt.show()
     gf.close()
 
@@ -586,7 +593,8 @@ def create_event_returns_tear_sheet(factor_data,
                 std_bar=False,
                 title=group,
                 ax=gf.next_cell())
-
+            
+        plt.savefig(report_dir+"create_event_returns_tear_sheet_by_group.jpg")   
         plt.show()
         gf.close()
 
@@ -630,6 +638,8 @@ def create_event_study_tear_sheet(factor_data,
     plotting.plot_events_distribution(events=factor_data['factor'],
                                       num_bars=n_bars,
                                       ax=gf.next_row())
+    
+    plt.savefig(report_dir+"create_event_study_tear_sheet1.jpg")       
     plt.show()
     gf.close()
 
@@ -697,5 +707,6 @@ def create_event_study_tear_sheet(factor_data,
             ax=gf.next_row()
         )
 
+    plt.savefig(report_dir+"create_event_study_tear_sheet2.jpg")           
     plt.show()
     gf.close()
